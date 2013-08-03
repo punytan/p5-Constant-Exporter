@@ -12,8 +12,16 @@ sub import {
     my (@export, @export_ok, %export_tags, %constants);
 
     if ($args{EXPORT_TAGS}) {
-        @export    = @{ $args{EXPORT}    || [] };
-        @export_ok = @{ $args{EXPORT_OK} || [] };
+        $args{EXPORT}    ||= [];
+        $args{EXPORT_OK} ||= [];
+
+        unless (ref $args{EXPORT} eq 'ARRAY' && ref $args{EXPORT_OK} eq 'ARRAY') {
+            require Carp;
+            Carp::croak("EXPORT and EXPORT_OK expects ArrayRef");
+        }
+
+        @export    = @{$args{EXPORT}};
+        @export_ok = @{$args{EXPORT_OK}};
 
         for my $tag (keys %{ $args{EXPORT_TAGS} }) {
             for my $name (keys %{ $args{EXPORT_TAGS}{$tag} || {} }) {
@@ -25,6 +33,14 @@ sub import {
             }
         }
     } else {
+        $args{EXPORT}    ||= {};
+        $args{EXPORT_OK} ||= {};
+
+        unless (ref $args{EXPORT} eq 'HASH' && ref $args{EXPORT_OK} eq 'HASH') {
+            require Carp;
+            Carp::croak("EXPORT and EXPORT_OK expects HashRef");
+        }
+
         for my $name (keys %{ $args{EXPORT} || {} }) {
             $constants{$name} = $args{EXPORT}->{$name};
             push @export, $name;
