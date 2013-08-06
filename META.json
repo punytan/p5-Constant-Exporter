@@ -4,7 +4,7 @@
       "punytan <punytan@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Milla version v1.0.3, Dist::Zilla version 4.300034, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Milla version v1.0.3, Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.131560",
    "license" : [
       "perl_5"
    ],
@@ -26,7 +26,7 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Module::Build::Tiny" : "0.019"
+            "Module::Build::Tiny" : "0.023"
          }
       },
       "develop" : {
@@ -46,6 +46,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/punytan/p5-Constant-Exporter/issues"
+      },
+      "homepage" : "https://github.com/punytan/p5-Constant-Exporter",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/punytan/p5-Constant-Exporter.git",
+         "web" : "https://github.com/punytan/p5-Constant-Exporter"
+      }
+   },
    "version" : "0.01"
 }
 
